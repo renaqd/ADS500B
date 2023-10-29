@@ -15,7 +15,7 @@
 4. Configured username
 
 
-###VS Code
+### VS Code
 5. Edited README file in VS Code
 
 6. Saved Changes
