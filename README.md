@@ -29,3 +29,7 @@
 9. git push
 
 10. third attempt
+
+11. edit README.md using vi in UNIX shell
+
+12. uploading Jupyter Notebooks of course materials
