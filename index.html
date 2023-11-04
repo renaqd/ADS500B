@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        Study materials for Data Science Programming (ADS-500B)
+        by Lorena
+        Date: 04NOV2023
+
+        Notice: Web page currently under review.
+    -->
+    <title>unix commands</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table spellcheck="false">
+        <tbody>
+            <tr>
+                <td colspan="2" class="common"><div><p>pwd &#183; cd &#183; ls &#183; ls -l &#183; man [cmd: ls, paste, etc]</p></div></td>
+            </tr>
+            <tr>
+                <td class="info">FS to comma</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk1">awk 'BEGIN{FS=";"; OFS=","} {$1=$1;print $0}' original.csv &gt; modified.csv</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk1')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">remove</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk2">rm file.csv</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk2')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">cat</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk3">cat file.csv | head</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk3')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">cut; combine col[i].. col[n]</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk4">cut -d"," -f[i],[n] file.csv | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk4')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">cut and sort</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk5">cut -d"," -f[i],[n] file.csv | sort -t"," -k2 | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk5')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">numerical sort</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk6">cut -d"," -f2,3 measurements.csv | lesscut -d"," -f[i],[n] file.csv | sort -t"," -k2 -n | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk6')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">pattern search</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk7">grep "PATTERN" file.csv | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk7')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">pattern/word count</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk8">grep "PATTERN" file.csv | wc -l</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk8')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">awk FS 'pattern {action}'</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk9">awk -F"," 'length($4)&lt;10 {print $4}' file.csv | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk9')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">awk | sort | uniq</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk9">awk -F"," 'length($4)&lt;10 {print $4}' file.csv | sort | uniq | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk9')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">whole line, $0</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk10">awk -F"," 'length($4)&lt;10 {print $0}' file.csv | sort | uniq | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk10')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">whole line</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk11">awk -F"," 'length($4)&lt;10' file.csv | sort | uniq | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk11')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">output records with 'condition'</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk12">awk -F"," '$5&lt;10' file.csv | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk12')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">Number of Fields Total = last col</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk13">awk -F"," '$NF&lt;10' file.csv | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk13')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">3rd-field, 1st-letter, 1-letter</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk14">awk -F"," '{print substr($3, 1, 1)}' file.csv | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk14')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">specified head | tail</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk15">awk -F"," '{print substr($3, 1, 1)}' file.csv | head -40 | tail -10</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk15')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">match with specified column</br>Ex: abcdefgh; h@8</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk16">awk -F"," 'match ($4, /Word/) {print "Word found in " $4 " @" RSTART}' file.csv | less</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk16')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">sed global</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk17">sed 's/Find/Replace/g' &lt;file.csv&gt; newfile.csv</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk17')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="info">cat | head</td>
+                <td><div class="contents">
+                        <div><textarea class="copyCommand" id="awk18">cat newfile.csv | head</textarea></div>
+                        <button type="button" id="copyButton" class="cssButton" onclick="copyCmd('awk18')">
+                        <span class="material-icons">content_copy</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="footer"><div><p>renaqd &#183; <a href="https://www.linkedin.com/in/ldorado/">LinkedIn</a> &#183;  <a href="https://github.com/renaqd">github</a></p></div></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script src="copy.js"></script>
+</html>
